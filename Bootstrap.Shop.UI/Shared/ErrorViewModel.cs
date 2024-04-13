@@ -1,8 +1,8 @@
-namespace Bootstrap.Shop.UI.Models;
+namespace Bootstrap.Shop.UI.Shared;
 
 public class ErrorViewModel
 {
-  public string? RequestId { get; set; }
+  public string? RequestId { get; init; }
 
   public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }
