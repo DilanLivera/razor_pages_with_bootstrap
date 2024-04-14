@@ -38,21 +38,21 @@
                  id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active"
-                           aria-current="page"
+                        <a class="nav-link @GetActiveClassOrDefault(controllerName: "Product")"
                            asp-controller="Product"
                            asp-action="Index">
                             Products
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="#">
+                        <a class="nav-link @GetActiveClassOrDefault(controllerName: "Order")"
+                           asp-controller="Order"
+                           asp-action="Index">
                             Orders
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
+                        <a class="nav-link dropdown-toggle @GetActiveClassOrDefault(controllerName: "Shop")"
                            href="#"
                            id="navbarDropdown"
                            role="button"
@@ -127,3 +127,26 @@
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+@functions {
+
+    /// <summary>
+    ///     Determines whether the current controller and action match the specified controller name.
+    /// </summary>
+    /// <param name="controllerName">The name of the controller to compare against.</param>
+    /// <returns>The string "active" if the controller and action match; otherwise, an empty string.</returns>
+    private string GetActiveClassOrDefault(string controllerName)
+    {
+        var action = ViewContext.RouteData
+            .Values["Action"]?
+            .ToString() ?? "";
+        var controller = ViewContext.RouteData
+            .Values["Controller"]?
+            .ToString() ?? "";
+
+        return action.Equals("Index") && controller.Equals(controllerName)
+            ? "active"
+            : "";
+    }
+
+}
