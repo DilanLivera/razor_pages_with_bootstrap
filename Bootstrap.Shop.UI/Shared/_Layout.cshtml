@@ -15,33 +15,30 @@
         body {
             font-family: "Inter", sans-serif;
         }
+        #b-example-vr {
+            height: 98vh;
+        }
     </style>
 </head>
 <body>
-<header>
-    <nav class="container navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand"
-               href="/">
-                Bootstrap Shop
-            </a>
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse"
-                 id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+<div class="bg-dark text-light">
+    <div class="container-fluid">
+        <div class="row pt-3 px-5" id="b-example-vr">
+            <main class="col-2">
+                <div class="container-fluid text-center">
+                    <a class="navbar-brand"
+                       href="/">
+                        Bootstrap Shop
+                    </a>
+                </div>
+                <hr>
+                <ul class="nav navbar-dark nav-pills flex-column">
                     <li class="nav-item">
                         <a class="nav-link @GetActiveClassOrDefault(controllerName: "Product")"
                            asp-controller="Product"
                            asp-action="Index">
-                            Products
+                            Home
                         </a>
                     </li>
                     <li class="nav-item">
@@ -51,66 +48,37 @@
                             Orders
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle @GetActiveClassOrDefault(controllerName: "Shop")"
-                           href="#"
-                           id="navbarDropdown"
-                           role="button"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Shop
+                    <li class="nav-item">
+                        <a href="#"
+                           class="nav-link">
+                            Dashboard
                         </a>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item"
-                                   href="#">
-                                    Action 1
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider"/>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                   href="#">
-                                    Another 2
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider"/>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                   href="#">
-                                    Another 3
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"
+                           class="nav-link">
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"
+                           class="nav-link">
+                            Customers
+                        </a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2"
-                           type="search"
-                           placeholder="Search"
-                           aria-label="Search"/>
-                    <button class="btn btn-outline-success"
-                            type="submit">
-                        Search
-                    </button>
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
+            </main>
 
-<div class="container py-5">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+            <main role="main" class="col-8 pt-5">
+                @RenderBody()
+            </main>
+
+            <div class="col-2"></div>
+        </div>
+    </div>
 </div>
 
-<footer class="footer fixed-bottom my-3 text-center">
+<footer class="footer fixed-bottom text-center bg-dark text-light p-1">
     <div class="container">
         <span>
             Copyrights ©2024 Bootstrap Shop. Build with <i class="bi bi-heart text-danger"></i> for learning purposes.
@@ -127,6 +95,7 @@
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
 
 @functions {
 
